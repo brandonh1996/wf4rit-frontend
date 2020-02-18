@@ -21,6 +21,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Modal from '@material-ui/core/Modal';
 import { FormBuilder } from 'cb-react-forms';
+import { FormGenerator } from 'cb-react-forms';
 
 const items = [
   {
@@ -110,14 +111,21 @@ const items = [
   }
 ];
  
-const onSubmitFunc = () => {
-  // Submit Function
-};
+const onSubmit = (formData) => console.log(formData);
 
 const Example = props => (
   <FormBuilder 
-    onSubmit={onSubmitFunc}  // function
+    onSubmit={onSubmit}  // function
     items={items}     // array of toolbar items
+  />
+);
+
+const ExampleGenerate = props => (
+  <FormGenerator 
+    formData={[{"id":"4f75fe84-7074-4e24-8d1a-12c5fffd644e","element":"Header","label":{"blocks":[{"key":"4mt5m","text":"Placeholder Label","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}},{"id":"1cfdc06c-6994-4822-bdd5-d6fdd013d08c","element":"Label","label":{"blocks":[{"key":"bc2a8","text":"Placeholder Label","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}},{"id":"bbb9deaa-b568-491a-8270-96681f405989","element":"Paragraph","label":{"blocks":[{"key":"dpv6j","text":"Placeholder Label","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}}]}     // JSON data from 
+    onSubmit={onSubmit}     // function
+    readOnly={true}     // boolean
+    //responseData={} // answers data to pre-fill the form
   />
 );
 
