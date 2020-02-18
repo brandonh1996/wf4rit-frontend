@@ -1,5 +1,5 @@
 import React from 'react';
-import history from './history';
+import history from '../history/history';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -47,6 +47,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SignIn() {
+  console.log(history);
   const classes = useStyles();
 
   return (
@@ -91,7 +92,7 @@ export default function SignIn() {
             color="primary"
             className={classes.submit}
             style={{ backgroundColor: '#F76902' }}
-            onClick={() => history.push('/Dashboard')}
+            onClick={() => history.push('/dashboard')}
           >
             Sign In
           </Button>

@@ -9,15 +9,18 @@ import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import DescriptionIcon from '@material-ui/icons/Description';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import SettingsIcon from '@material-ui/icons/Settings';
+import { NavLink } from 'react-router-dom';
 
 export const mainListItems = (
   <div>
+    <NavLink style={{textDecoration: "none", color: "#212121"}} to="/dashboard">
     <ListItem button>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
+    </NavLink>
     <ListItem button>
       <ListItemIcon>
         <WorkIcon />
@@ -30,12 +33,14 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Projects" />
     </ListItem>
+    <NavLink style={{textDecoration: "none", color: "#212121"}} to="/forms">
     <ListItem button>
       <ListItemIcon>
         <DescriptionIcon />
       </ListItemIcon>
       <ListItemText primary="Forms" />
     </ListItem>
+    </NavLink>
   </div>
 );
 
