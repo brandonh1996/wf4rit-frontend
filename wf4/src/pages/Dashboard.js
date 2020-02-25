@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Dashboard from '../components/dashboard/dashboard'
+import DashboardComponent from '../components/dashboard/dashboard'
 
-export default class Login extends Component {
+export default class Dashboard extends Component {
     render() {
         return (
-            <Dashboard />
+            <DashboardComponent />
         )
     }
 }

@@ -9,10 +9,13 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "cb-react-forms": "^1.1.0",
+    "material-table": "^1.57.2",
     "terser": "3.14.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-dev-utils": "^5.0.3",
+    "react-form-builder2": "^0.4.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.1",
     "recharts": "^2.0.0-beta.1"
