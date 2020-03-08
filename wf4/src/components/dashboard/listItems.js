@@ -21,12 +21,14 @@ export const mainListItems = (
       <ListItemText primary="Dashboard" />
     </ListItem>
     </NavLink>
+    <NavLink style={{textDecoration: "none", color: "#212121"}} to="/workflows">
     <ListItem button>
       <ListItemIcon>
         <WorkIcon />
       </ListItemIcon>
       <ListItemText primary="Workflows" />
     </ListItem>
+    </NavLink>
     <ListItem button>
       <ListItemIcon>
         <AccountTreeIcon />

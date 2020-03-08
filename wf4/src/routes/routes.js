@@ -7,6 +7,7 @@ import {
 import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 import Forms from '../pages/Forms';
+import Workflows from '../pages/Workflows';
 
 export default function Routes() {
   return (
@@ -16,6 +17,7 @@ export default function Routes() {
           <Route path="/login" component={Login}></Route>
           <Route path="/dashboard" component={Dashboard}></Route>
           <Route path="/forms" component={Forms}></Route>
+          <Route path="/workflows" component={Workflows}></Route>
         </Switch>
     </Router>
   );
