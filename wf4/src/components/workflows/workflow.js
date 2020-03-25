@@ -25,19 +25,9 @@ import { FormGenerator } from 'cb-react-forms';
 
 const items = [
   {
-    key: "Header",
-    name: "Header Text",
-    icon: "fa fa-header"
-  },
-  {
     key: "Label",
     name: "Label",
     icon: "fa fa-font"
-  },
-  {
-    key: "Paragraph",
-    name: "Paragraph",
-    icon: "fa fa-paragraph"
   },
   {
     key: "LineBreak",
@@ -50,19 +40,9 @@ const items = [
     icon: "fa fa-caret-square-o-down"
   },
   {
-    key: "Tags",
-    name: "Tags",
-    icon: "fa fa-tags"
-  },
-  {
     key: "Checkboxes",
     name: "Checkboxes",
     icon: "fa fa-check-square-o"
-  },
-  {
-    key: "RadioButtons",
-    name: "Multiple Choice",
-    icon: "fa fa-dot-circle-o"
   },
   {
     key: "TextInput",
@@ -80,19 +60,9 @@ const items = [
     icon: "fa fa-text-height"
   },
   {
-    key: "Rating",
-    name: "Rating",
-    icon: "fa fa-star"
-  },
-  {
     key: "HyperLink",
     name: "Web site",
     icon: "fa fa-link"
-  },
-  {
-    key: "Range",
-    name: "Range",
-    icon: "fa fa-sliders"
   },
   {
     key: "Email",
@@ -122,7 +92,7 @@ const Example = props => (
 
 const ExampleGenerate = props => (
   <FormGenerator 
-    formData={[{"id":"c2edc71d-f006-449d-a097-f1a5e7c9fa7f","element":"Header","label":{"blocks":[{"key":"59a94","text":"Ja","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}},{"id":"b0174909-8399-4b44-b9a8-dc32dc47571b","element":"Label","label":{"blocks":[{"key":"f8q7a","text":"sam","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}},{"id":"cda08e7d-c371-4a3b-b97f-848d040f756c","element":"Paragraph","label":{"blocks":[{"key":"ccvdm","text":"konj","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}},{"id":"fa9f578a-7c5f-4f04-9f36-868d87c92ec9","element":"Dropdown","label":{"blocks":[{"key":"83m03","text":"Placeholder Label","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}},"required":false,"options":[{"id":"1c8b5c8d-d70d-43be-8f6d-7f20f78a4e60","value":"Option1"},{"id":"7fd52aa8-8e48-4575-9e16-1f80a675e781","value":"Option2"}]}]}     // JSON data from 
+    formData={[{"id":"c2edc71d-f006-449d-a097-f1a5e7c9fa7f","element":"Header","label":{"blocks":[{"key":"59a94","text":"Test 1","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}},{"id":"b0174909-8399-4b44-b9a8-dc32dc47571b","element":"Label","label":{"blocks":[{"key":"f8q7a","text":"Test 2","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}},{"id":"cda08e7d-c371-4a3b-b97f-848d040f756c","element":"Paragraph","label":{"blocks":[{"key":"ccvdm","text":"Test 3","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}},{"id":"fa9f578a-7c5f-4f04-9f36-868d87c92ec9","element":"Dropdown","label":{"blocks":[{"key":"83m03","text":"Placeholder Label","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}},"required":false,"options":[{"id":"1c8b5c8d-d70d-43be-8f6d-7f20f78a4e60","value":"Option1"},{"id":"7fd52aa8-8e48-4575-9e16-1f80a675e781","value":"Option2"}]}]}     // JSON data from 
     onSubmit={onSubmit}     // function
     readOnly={true}     // boolean
     //responseData={} // answers data to pre-fill the form
@@ -283,7 +253,7 @@ const EnhancedTableToolbar = props => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle">
-          Documents
+          Workflows
         </Typography>
       )}
 
@@ -477,7 +447,7 @@ export default function EnhancedTable() {
         />
       </Paper>
       <Button onClick={handleOpen} variant="contained" color="primary" style={{ backgroundColor: '#F76902' }}>
-          Create New Document
+          Create New Workflow
       </Button>
       <Modal
         aria-labelledby="simple-modal-title"
