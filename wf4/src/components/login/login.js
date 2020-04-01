@@ -60,7 +60,7 @@ export default function SignIn() {
     e.preventDefault();
   
     const url = "./api/login.php"
-    axios.get(
+    axios.post(
       url,
       {
         username,
