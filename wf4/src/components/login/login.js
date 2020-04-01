@@ -76,7 +76,7 @@ export default function SignIn() {
         setFireRedirect(true);
       }
     }).catch(function (error) {
-      
+        setFireRedirect(false);
     });
   };
   
