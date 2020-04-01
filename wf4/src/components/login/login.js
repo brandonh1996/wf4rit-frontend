@@ -59,7 +59,7 @@ export default function SignIn() {
 
     e.preventDefault();
   
-    const url = "http://dev01.wf4rit.me/api/login.php"
+    const url = "http://dev01.wf4rit.me/api/login.php";
     axios.get(
       url,
       {
