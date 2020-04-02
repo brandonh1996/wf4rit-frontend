@@ -21,7 +21,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Modal from '@material-ui/core/Modal';
 import { FormBuilder } from 'cb-react-forms';
-import { FormGenerator } from 'cb-react-forms';
+//import { FormGenerator } from 'cb-react-forms';
 
 const items = [
   {
@@ -90,6 +90,7 @@ const Example = props => (
   />
 );
 
+/**
 const ExampleGenerate = props => (
   <FormGenerator 
     formData={[{"id":"c2edc71d-f006-449d-a097-f1a5e7c9fa7f","element":"Header","label":{"blocks":[{"key":"59a94","text":"Test 1","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}},{"id":"b0174909-8399-4b44-b9a8-dc32dc47571b","element":"Label","label":{"blocks":[{"key":"f8q7a","text":"Test 2","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}},{"id":"cda08e7d-c371-4a3b-b97f-848d040f756c","element":"Paragraph","label":{"blocks":[{"key":"ccvdm","text":"Test 3","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}},{"id":"fa9f578a-7c5f-4f04-9f36-868d87c92ec9","element":"Dropdown","label":{"blocks":[{"key":"83m03","text":"Placeholder Label","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}},"required":false,"options":[{"id":"1c8b5c8d-d70d-43be-8f6d-7f20f78a4e60","value":"Option1"},{"id":"7fd52aa8-8e48-4575-9e16-1f80a675e781","value":"Option2"}]}]}     // JSON data from 
@@ -98,17 +99,7 @@ const ExampleGenerate = props => (
     //responseData={} // answers data to pre-fill the form
   />
 );
-
-const useStylesModal = makeStyles(theme => ({
-    paper: {
-      position: 'absolute',
-      width: 400,
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
-  }));
+*/
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -308,7 +299,7 @@ export default function EnhancedTable() {
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
+  const [dense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleRequestSort = (event, property) => {
@@ -353,10 +344,6 @@ export default function EnhancedTable() {
   const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
-  };
-
-  const handleChangeDense = event => {
-    setDense(event.target.checked);
   };
 
   const isSelected = name => selected.indexOf(name) !== -1;

@@ -29,12 +29,14 @@ export const mainListItems = (
       <ListItemText primary="Workflows" />
     </ListItem>
     </NavLink>
+    <NavLink style={{textDecoration: "none", color: "#212121"}} to="/projects">
     <ListItem button>
       <ListItemIcon>
         <AccountTreeIcon />
       </ListItemIcon>
       <ListItemText primary="Projects" />
     </ListItem>
+    </NavLink>
     <NavLink style={{textDecoration: "none", color: "#212121"}} to="/forms">
     <ListItem button>
       <ListItemIcon>
@@ -49,17 +51,21 @@ export const mainListItems = (
 export const secondaryListItems = (
   <div>
     <ListSubheader inset>Other</ListSubheader>
+    <NavLink style={{textDecoration: "none", color: "#212121"}} to="/admin">
     <ListItem button>
       <ListItemIcon>
         <SupervisorAccountIcon />
       </ListItemIcon>
       <ListItemText primary="Admin" />
     </ListItem>
+    </NavLink>
+    <NavLink style={{textDecoration: "none", color: "#212121"}} to="/settings">
     <ListItem button>
       <ListItemIcon>
         <SettingsIcon />
       </ListItemIcon>
       <ListItemText primary="Settings" />
     </ListItem>
+    </NavLink>
   </div>
 );
