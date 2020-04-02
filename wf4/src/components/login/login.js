@@ -142,9 +142,10 @@ export default function SignIn() {
             Sign In
           </Button>
         </form>
-        {fireRedirect && (
+        {fireRedirect ? 
           <Redirect to={'/dashboard'}/>
-        )}
+          : <Redirect to={'/login'}/>
+        }
       </div>
       <Box mt={8}>
         <Copyright />
