@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/wf4rit/public_html/dev99
+    - export DEPLOYPATH=/home/wf4rit/public_html/dev01/frontend-repo
     - /bin/cp -R * $DEPLOYPATH
