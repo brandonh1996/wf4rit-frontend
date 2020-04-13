@@ -84,6 +84,18 @@ export default function SettingsComponent() {
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
+                required
+                fullWidth
+                id="company"
+                label="Company"
+                name="company"
+                autoComplete="company"
+                value="Venture Creations"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
                 fullWidth
                 name="password"
                 label="New password"

@@ -111,7 +111,10 @@ const items = [
   }
 ];
  
-const onSubmit = (formData) => console.log(formData);
+const onSubmit = (formData) => {
+  console.log(formData)
+  window.print();
+};
 
 const Example = props => (
   <FormBuilder

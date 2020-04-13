@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Title from './title';
 
 function preventDefault(event) {
-  event.preventDefault();
+  //event.preventDefault();
 }
 
 const useStyles = makeStyles({
@@ -14,20 +14,20 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits() {
+export default function Deposits(props) {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Documents</Title>
+      <Title>{props.title}</Title>
       <Typography component="p" variant="h4">
-        357
+      {props.number}
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
-        on 5 February, 2020
+      {props.date}
       </Typography>
       <div>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          View documents
+        <Link color="primary" href={props.hrefLink} onClick={preventDefault}>
+        {props.link}
         </Link>
       </div>
     </React.Fragment>

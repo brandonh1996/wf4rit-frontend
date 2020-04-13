@@ -18,6 +18,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../common/listItems';
 import FormsComponent from '../forms/form';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 function Copyright() {
     return (
@@ -114,14 +118,32 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const useStyles2 = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    backgroundColor: 'white'
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+}));
+
 export default function DashboardComponent() {
   const classes = useStyles();
+  const classes2 = useStyles2();
   const [open, setOpen] = React.useState(true);
+  const [notif, setNotif] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+  const handleNotif = () => {
+    if (notif) {
+    setNotif(false);
+    } else setNotif(true);
   };
 
   return (
@@ -141,12 +163,44 @@ export default function DashboardComponent() {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Forms
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
+          <IconButton onClick={handleNotif} color="inherit">
+            <Badge badgeContent={2} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
         </Toolbar>
+        {notif && (
+        <div className={classes2.root}>
+        <ExpansionPanel>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography className={classes2.heading}>Sign Form for CM67</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            A form needs your signature
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+      <ExpansionPanel>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+        >
+          <Typography className={classes2.heading}>Review workflow completion for C56</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            A workflow completion review is required
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+    </div>)
+    }
       </AppBar>
       <Drawer
         variant="permanent"

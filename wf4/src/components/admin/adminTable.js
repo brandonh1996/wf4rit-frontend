@@ -43,6 +43,13 @@ export default function MaterialTableDemo() {
     columns: [
       { title: 'Name', field: 'name' },
       { title: 'Surname', field: 'surname' },
+      { title: 'E-Mail', field: 'email' },
+      {
+        title: 'Role',
+        field: 'role',
+        lookup: { 1: 'Admin', 2: 'Coach', 3: 'External' },
+      },
+      { title: 'Company', field: 'company' },
       { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
       {
         title: 'Birth Place',
@@ -51,10 +58,13 @@ export default function MaterialTableDemo() {
       },
     ],
     data: [
-      { name: 'Jack', surname: 'Example', birthYear: 1987, birthCity: 63 },
+      { name: 'Jack', surname: 'Example', email: 'jack.example@test.com', role: 2, company: 'Venture Creations', birthYear: 1987, birthCity: 63 },
       {
         name: 'Jane',
         surname: 'Doe',
+        email: 'jane.doe@test.com',
+        role: 1,
+        company: 'Venture Creations',
         birthYear: 2000,
         birthCity: 34,
       },

@@ -22,6 +22,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import Modal from '@material-ui/core/Modal';
 import { FormBuilder } from 'cb-react-forms';
 //import { FormGenerator } from 'cb-react-forms';
+import VerticalLinearStepper from './stepper';
 
 const items = [
   {
@@ -444,7 +445,7 @@ export default function EnhancedTable() {
         style={{overflow:'scroll'}}
       >
         <div style={{position: 'absolute', top: '5%', left: '35%', width: '800px', maxHeight: '300%', backgroundColor: 'white'}} className={classes.paper}>
-          <Example />
+        <VerticalLinearStepper />
         </div>
       </Modal>
     </div>
