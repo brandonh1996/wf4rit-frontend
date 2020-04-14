@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/wf4rit/public_html/prod
-    - /bin/cp -R * $DEPLOYPATH
