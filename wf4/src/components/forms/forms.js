@@ -17,11 +17,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../common/listItems';
-import FormsComponent from '../forms/form';
+//import FormsComponent from '../forms/form';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import FormsTable from './formsTable';
 
 function Copyright() {
     return (
@@ -120,8 +121,9 @@ const useStyles = makeStyles(theme => ({
 
 const useStyles2 = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    backgroundColor: 'white'
+    width: '99%',
+    backgroundColor: 'white',
+    margin: '0 auto'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -222,7 +224,7 @@ export default function DashboardComponent() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <FormsComponent />
+          <FormsTable />
           <Box pt={4}>
             <Copyright />
           </Box>

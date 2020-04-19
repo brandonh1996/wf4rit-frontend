@@ -120,8 +120,9 @@ const useStyles = makeStyles(theme => ({
 
 const useStyles2 = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    backgroundColor: 'white'
+    width: '99%',
+    backgroundColor: 'white',
+    margin: '0 auto'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),

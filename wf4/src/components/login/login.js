@@ -88,7 +88,10 @@ export default function SignIn() {
       null,
     ).then(response => {
       if (response.status === 200){
-        if (!response.data.includes('bool(false)')) {
+        if (!response.data.includes('"message":"Login failed."')) {
+          var removeFirst = response.data.split('"jwt":').pop().substring(1);
+          var token = removeFirst.substring(0, removeFirst.length - 2);
+          localStorage.setItem('token', token); 
           setFireRedirect(true);
         } else {
           setOpen(true);

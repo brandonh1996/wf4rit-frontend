@@ -19,9 +19,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../common/listItems';
-import Chart from './chart';
-import Deposits from './deposits';
-import Orders from './orders';
+import Statistics from './statistics';
+import Tasks from './tasks';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -124,8 +123,9 @@ const useStyles = makeStyles(theme => ({
 
 const useStyles2 = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    backgroundColor: 'white'
+    width: '99%',
+    backgroundColor: 'white',
+    margin: '0 auto'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -230,37 +230,31 @@ export default function DashboardComponent() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Chart 
-            <Grid item xs={12} md={8} lg={6}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid>*/}
-            {/* Recent Deposits */}
+            {/* Recent Statistics */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Deposits title="Workflows" number={7} date={"on 02 April, 2020"} link="View workflows" hrefLink="/workflows"/>
+                <Statistics title="Workflows" icon={"workflows"} number={7} date={"on 02 April, 2020"} link="View workflows" hrefLink="/workflows"/>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Deposits title="Projects" number={4} date={"on 02 April, 2020"} link="View projects" hrefLink="/projects"/>
+                <Statistics title="Projects" icon={"projects"} number={4} date={"on 02 April, 2020"} link="View projects" hrefLink="/projects"/>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Deposits title="Forms" number={21} date={"on 02 April, 2020"} link="View forms" hrefLink="/forms"/>
+                <Statistics title="Forms" icon={"forms"} number={21} date={"on 02 April, 2020"} link="View forms" hrefLink="/forms"/>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Deposits title="Users" number={14} date={"on 02 April, 2020"} link="View users" hrefLink="/admin"/>
+                <Statistics title="Users" icon={"users"} number={14} date={"on 02 April, 2020"} link="View users" hrefLink="/admin"/>
               </Paper>
             </Grid>
-            {/* Recent Orders */}
+            {/* Recent Tasks */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <Tasks />
               </Paper>
             </Grid>
           </Grid>

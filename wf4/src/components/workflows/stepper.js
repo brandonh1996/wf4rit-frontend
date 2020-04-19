@@ -36,116 +36,55 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-var selectedDate = new Date('2020-08-18T21:11:54')
-
-const handleDateChange = (date) => {
-    selectedDate = date;
-};
-
-var steps = [{name: <Input required placeholder="Step name..."></Input>, description: <Input fullWidth multiline placeholder="Step description..."></Input>, 
-person: 
-<div style={{marginTop: '20px'}}>
-<InputLabel>Asignee</InputLabel>  
-<Select
-style={{minWidth: '120px'}}
-labelId="demo-simple-select-label"
-id="demo-simple-select"
-value="Jack"
->      
-<MenuItem value='Jack'>Jack Example</MenuItem>
-<MenuItem value='Jane'>Jane Doe</MenuItem>
-</Select>
-<MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Grid container justify="space-around">
-        <KeyboardDatePicker
-          disableToolbar
-          variant="inline"
-          format="MM/dd/yyyy"
-          margin="normal"
-          id="date-picker-inline"
-          label="Start Date"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-        <KeyboardDatePicker
-          disableToolbar
-          variant="inline"
-          format="MM/dd/yyyy"
-          margin="normal"
-          id="date-picker-inline"
-          label="End Date"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-      </Grid>
-    </MuiPickersUtilsProvider>
-</div>}, {name: <Input placeholder="Step name..."></Input>, description: <Input fullWidth multiline placeholder="Step description..."></Input>, person: <Select
-style={{minWidth: '120px'}}
-placeholder="Choose asignee..."
-labelId="demo-simple-select-label"
-id="demo-simple-select"
->
-<MenuItem value={'Jack'}>Jack Example</MenuItem>
-<MenuItem value={'Jane'}>Jane Doe</MenuItem>
-</Select>}];
-
-function getSteps() {
-  let stepNames = [];
-
-  steps.forEach(element => {
-    stepNames.push(element.name)
-  });  
-
-  return stepNames;
-}
-
-function addStep() {
-  let defaultStep = {name: <Input required placeholder="Step name..."></Input>, description: <Input fullWidth multiline placeholder="Step description..."></Input>, 
-  person: 
-  <div style={{marginTop: '20px'}}>
-  <InputLabel>Asignee</InputLabel>  
-  <Select
-  style={{minWidth: '120px'}}
-  labelId="demo-simple-select-label"
-  id="demo-simple-select"
-  value="Jack"
-  >      
-  <MenuItem value='Jack'>Jack Example</MenuItem>
-  <MenuItem value='Jane'>Jane Doe</MenuItem>
-  </Select>
-  </div>}  
-  steps.push(defaultStep);
-}
-
-function removeStep() {
-    steps.pop();
-  }
-
-function getStepContent(step) {
-    return steps[step].description
-}
-
-function getStepPerson(step) {
-    return steps[step].person
-}
-
 export default function VerticalLinearStepper() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  //const [steps, setSteps] = React.useState([]);
+
   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+
+  const [activeStep, setActiveStep] = React.useState(0);
+
+  const [name, setName] = React.useState('Jack');
+
+  const [id, setId] = React.useState(0);
+
+  const updateSteps = (event) => {
+    console.log(event.target.value);
+    const elementsIndex = steps.findIndex(element => element.id == id );
+
+    let newArray = [...steps];
+
+    //newArray[elementsIndex].name.props.value = event.target.value;
+
+    newArray[elementsIndex] = {...newArray[elementsIndex], name: event.target.value}
+
+    setSteps(newArray);
+  }
+
+  const handleIdIncrease = () => {
+    console.log(id);
+    setId((prevId) => prevId + 1);
+  };
+
+  const handleIdDecrease = () => {
+    console.log(id);
+    setId((prevId) => prevId - 1);
+  };
+
+  const handleNameChange = (event) => {
+    console.log(name);
+    setName(event.target.value);
+  };
+
+  const [stepName, setStepName] = React.useState('');
+
+  const handleStepNameChange = (event) => {
+    console.log(stepName);
+    setStepName(event.target.value);
+  };
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
-
-  var steps = getSteps();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -160,27 +99,196 @@ export default function VerticalLinearStepper() {
   };
 
   const handleAdd = () => {
-    addStep()
-    handleNext();
+        handleIdIncrease();
+        addStep()
+        handleNext()
   };
 
   const handleRemove = () => {
     if(steps.length !== 1) {
+        handleIdDecrease();
+        handleBack()
         removeStep()
-        handleBack();
     }
   };
 
+  const [steps, setSteps] = React.useState([{
+  id: id,  
+  name: <Input onChange={updateSteps} value={'Step ' + (id + 1)} placeholder="Step name..."></Input>, 
+  description: <Input fullWidth multiline placeholder="Step description..."></Input>, 
+  person: 
+  <div style={{marginTop: '20px'}}>
+  <InputLabel>Assignee</InputLabel>  
+  <Select
+  style={{minWidth: '120px'}}
+  labelId="demo-simple-select-label"
+  id="demo-simple-select"
+  value={name}
+  onChange={handleNameChange}
+  >      
+  <MenuItem value='Jack'>Jack Example</MenuItem>
+  <MenuItem value='Jane'>Jane Doe</MenuItem>
+  </Select>
+  </div>, 
+  date:   
+  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <Grid container justify="space-around">
+      <KeyboardDatePicker
+        disableToolbar
+        variant="inline"
+        format="MM/dd/yyyy"
+        margin="normal"
+        id="startDate"
+        label="Start Date"
+        value={selectedDate}
+        onChange={handleDateChange}
+        KeyboardButtonProps={{
+          'aria-label': 'change date',
+        }}
+      />
+      <KeyboardDatePicker
+        disableToolbar
+        variant="inline"
+        format="MM/dd/yyyy"
+        margin="normal"
+        id="endDate"
+        label="End Date"
+        value={selectedDate}
+        onChange={handleDateChange}
+        KeyboardButtonProps={{
+          'aria-label': 'change date',
+        }}
+      />
+    </Grid>
+  </MuiPickersUtilsProvider>}]);
+
+  var beginSteps = [{
+    id: id,  
+    name: <Input onChange={updateSteps} value={'Step ' + (id + 1)} placeholder="Step name..."></Input>, 
+    description: <Input fullWidth multiline placeholder="Step description..."></Input>, 
+    person: 
+    <div style={{marginTop: '20px'}}>
+    <InputLabel>Assignee</InputLabel>  
+    <Select
+    style={{minWidth: '120px'}}
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    value={name}
+    onChange={handleNameChange}
+    >      
+    <MenuItem value='Jack'>Jack Example</MenuItem>
+    <MenuItem value='Jane'>Jane Doe</MenuItem>
+    </Select>
+    </div>, 
+    date:   
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <Grid container justify="space-around">
+        <KeyboardDatePicker
+          disableToolbar
+          variant="inline"
+          format="MM/dd/yyyy"
+          margin="normal"
+          id="startDate"
+          label="Start Date"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+        <KeyboardDatePicker
+          disableToolbar
+          variant="inline"
+          format="MM/dd/yyyy"
+          margin="normal"
+          id="endDate"
+          label="End Date"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+      </Grid>
+    </MuiPickersUtilsProvider>}]
+
+function addStep() {
+  let defaultStep = {
+  id: id,  
+  name: <Input required placeholder="Step name..."></Input>, 
+  description: <Input fullWidth multiline placeholder="Step description..."></Input>, 
+  person: 
+  <div style={{marginTop: '20px'}}>
+  <InputLabel>Assignee</InputLabel>  
+  <Select
+  style={{minWidth: '120px'}}
+  labelId="demo-simple-select-label"
+  id="demo-simple-select"
+  value={name}
+  onChange={handleNameChange}
+  >      
+  <MenuItem value='Jack'>Jack Example</MenuItem>
+  <MenuItem value='Jane'>Jane Doe</MenuItem>
+  </Select>
+  </div>,
+  date:   
+  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <Grid container justify="space-around">
+      <KeyboardDatePicker
+        disableToolbar
+        variant="inline"
+        format="MM/dd/yyyy"
+        margin="normal"
+        id="startDate"
+        label="Start Date"
+        value={selectedDate}
+        onChange={handleDateChange}
+        KeyboardButtonProps={{
+          'aria-label': 'change date',
+        }}
+      />
+      <KeyboardDatePicker
+        disableToolbar
+        variant="inline"
+        format="MM/dd/yyyy"
+        margin="normal"
+        id="endDate"
+        label="End Date"
+        value={selectedDate}
+        onChange={handleDateChange}
+        KeyboardButtonProps={{
+          'aria-label': 'change date',
+        }}
+      />
+    </Grid>
+  </MuiPickersUtilsProvider>};
+  
+  let newSteps = steps;
+
+  newSteps.push(defaultStep);
+
+  setSteps(newSteps);
+}
+
+  function removeStep() {
+    let newSteps = steps;
+
+    newSteps.pop();
+
+    setSteps(newSteps);
+    }
+
   return (
     <div className={classes.root}>
-      <Input required style={{margin: '24px'}} placeholder="Workflow name"></Input>
+      <Input style={{margin: '24px'}} placeholder="Workflow name"></Input>
       <Stepper activeStep={activeStep} orientation="vertical">
-        {steps.map((label, index) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+        {steps.map((step, index) => (
+          <Step key={index}>
+            <StepLabel>{step.name}</StepLabel>
             <StepContent>
-              <Typography component={'span'}>{getStepContent(index)}</Typography>
-              <Typography component={'span'}>{getStepPerson(index)}</Typography>
+              <Typography component={'span'}>{step.description}</Typography>
+              <Typography component={'span'}>{step.person}</Typography>
+              <Typography component={'span'}>{step.date}</Typography>
               <div className={classes.actionsContainer}>
                 <div>
                   <Button
