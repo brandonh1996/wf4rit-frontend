@@ -11,7 +11,13 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import axios from 'axios';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function Copyright() {
   return (
@@ -44,13 +50,29 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
 }));
 
 export default function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [fireRedirect, setFireRedirect] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  
   const classes = useStyles();
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   let handleSubmit = (e) => {
     if(username === "" || password === "") {
@@ -59,24 +81,21 @@ export default function SignIn() {
 
     e.preventDefault();
   
-    const url = "https://5e5f8c13b5c43c0014ef9a75.mockapi.io/workflow4/login"
+    const url = "http://dev99.wf4rit.me/api/login.php?email=" + username + "&password=" + password
     axios.get(
       url,
-      {
-        username,
-        password
-      },
-      {
-        headers: {
-          'Content-Type' : 'application/json'
-        }
-      }
+      null,
+      null,
     ).then(response => {
       if (response.status === 200){
-        setFireRedirect(true);
+        if (!response.data.includes('bool(false)')) {
+          setFireRedirect(true);
+        } else {
+          setOpen(true);
+        }
       }
     }).catch(function (error) {
-      
+      setOpen(true);
     });
   };
   
@@ -92,6 +111,13 @@ export default function SignIn() {
 
   return (
     <Container component="main" maxWidth="xs">
+      <div className={classes.root}>
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error">
+          Login failed!
+        </Alert>
+      </Snackbar>
+      </div>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar alt="VC" style={{ color: '#F76902', width: '400px', height: 'auto', borderRadius: '0%', paddingBottom: '30px' }} src="https://venturecreations.com//wp-content/uploads/2019/04/Tagline_Logo.png" />
