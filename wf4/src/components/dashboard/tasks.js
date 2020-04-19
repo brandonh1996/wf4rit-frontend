@@ -17,8 +17,8 @@ const rows = [
   createData(0, '16 Mar, 2020', 'Venture Project', 'A67', 'Approve document', 'Jane Doe', 'No'),
   createData(1, '16 Mar, 2020', 'Administration', 'B56', 'Sign form', 'Jane Doe', 'Yes'),
   createData(2, '16 Mar, 2020', 'Venture Project', 'A67', 'Update settings', 'Jack Example', 'Yes'),
-  createData(3, '16 Mar, 2020', 'Finance Documentation', 'Contact Jack Example', 'C36', 'Jane Doe', 'No'),
-  createData(4, '15 Mar, 2020', 'Finance Documentation', 'Create form', 'C36', 'Jack Example', 'No'),
+  createData(3, '16 Mar, 2020', 'Finance Documentation', 'C36', 'Contact Jack Example', 'Jane Doe', 'No'),
+  createData(4, '15 Mar, 2020', 'Finance Documentation', 'C36', 'Create form', 'Jack Example', 'No'),
 ];
 
 function preventDefault(event) {
