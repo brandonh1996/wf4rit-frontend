@@ -44,7 +44,7 @@ export default function Tasks() {
             <TableCell>Workflow</TableCell>
             <TableCell>Task</TableCell>
             <TableCell>Person</TableCell>
-            <TableCell align="right">Status</TableCell>
+            <TableCell align="right">Complete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
