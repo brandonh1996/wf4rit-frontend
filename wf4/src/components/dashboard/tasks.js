@@ -9,16 +9,16 @@ import TableRow from '@material-ui/core/TableRow';
 import Title from './title';
 
 // Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
+function createData(id, date, project, workflow, task, person, done) {
+  return { id, date, project, workflow, task, person, done };
 }
 
 const rows = [
-  createData(0, '16 Mar, 2020', 'Account Payment', 'Buffalo, NY', '4526-2769-3719 5863', '55.7 %'),
-  createData(1, '16 Mar, 2020', 'Form Fill', 'Rochester, NY', '4526-2769-3719 2574', '80 %'),
-  createData(2, '16 Mar, 2020', 'Venue Booking', 'Yonkers, NY', '4526-2769-3719 1253', '60 %'),
-  createData(3, '16 Mar, 2020', 'Office Paperwork', 'Albany, NY', '4526-2769-3719 2000', '97.2 %'),
-  createData(4, '15 Mar, 2020', 'Menagerial Tasks', 'Long Branch, NJ', '4526-2769-3719 5919', '33.3 %'),
+  createData(0, '16 Mar, 2020', 'Venture Project', 'A67', 'Approve document', 'Jane Doe', 'No'),
+  createData(1, '16 Mar, 2020', 'Administration', 'B56', 'Sign form', 'Jane Doe', 'Yes'),
+  createData(2, '16 Mar, 2020', 'Venture Project', 'A67', 'Update settings', 'Jack Example', 'Yes'),
+  createData(3, '16 Mar, 2020', 'Finance Documentation', 'C36', 'Contact Jack Example', 'Jane Doe', 'No'),
+  createData(4, '15 Mar, 2020', 'Finance Documentation', 'C36', 'Create form', 'Jack Example', 'No'),
 ];
 
 function preventDefault(event) {
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Orders() {
+export default function Tasks() {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -40,20 +40,22 @@ export default function Orders() {
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Location</TableCell>
-            <TableCell>Serial Number</TableCell>
-            <TableCell align="right">Progress</TableCell>
+            <TableCell>Project</TableCell>
+            <TableCell>Workflow</TableCell>
+            <TableCell>Task</TableCell>
+            <TableCell>Person</TableCell>
+            <TableCell align="right">Complete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map(row => (
             <TableRow key={row.id}>
               <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
+              <TableCell>{row.project}</TableCell>
+              <TableCell>{row.workflow}</TableCell>
+              <TableCell>{row.task}</TableCell>
+              <TableCell>{row.person}</TableCell>
+              <TableCell align="right">{row.done}</TableCell>
             </TableRow>
           ))}
         </TableBody>

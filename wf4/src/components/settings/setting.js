@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function preventDefault(event) {
+  event.preventDefault();
+}
+
 export default function SettingsComponent() {
   const classes = useStyles();
 
@@ -111,6 +115,7 @@ export default function SettingsComponent() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={preventDefault}
           >
             Update
           </Button>

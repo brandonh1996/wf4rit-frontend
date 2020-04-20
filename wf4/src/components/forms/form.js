@@ -134,8 +134,8 @@ const ExampleGenerate = props => (
 );
 */
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(name, active, person, created, updated) {
+  return { name, active, person, created, updated };
 }
 
 const rows = [
@@ -182,13 +182,13 @@ function stableSort(array, comparator) {
 
 const headCells = [
   { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-  { id: 'calories', numeric: true, disablePadding: false, label: 'Active' },
-  { id: 'fat', numeric: true, disablePadding: false, label: 'Created By' },
-  { id: 'carbs', numeric: true, disablePadding: false, label: 'Date Created' },
-  { id: 'protein', numeric: true, disablePadding: false, label: 'Date Updated' },
+  { id: 'active', numeric: true, disablePadding: false, label: 'Active' },
+  { id: 'person', numeric: true, disablePadding: false, label: 'Created By' },
+  { id: 'created', numeric: true, disablePadding: false, label: 'Date Created' },
+  { id: 'updated', numeric: true, disablePadding: false, label: 'Date Updated' },
 ];
 
-function EnhancedTableHead(props) {
+function FormTableHead(props) {
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
   const createSortHandler = property => event => {
     onRequestSort(event, property);
@@ -231,7 +231,7 @@ function EnhancedTableHead(props) {
   );
 }
 
-EnhancedTableHead.propTypes = {
+FormTableHead.propTypes = {
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
@@ -261,7 +261,7 @@ const useToolbarStyles = makeStyles(theme => ({
   },
 }));
 
-const EnhancedTableToolbar = props => {
+const FormTableToolbar = props => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
 
@@ -298,7 +298,7 @@ const EnhancedTableToolbar = props => {
   );
 };
 
-EnhancedTableToolbar.propTypes = {
+FormTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
@@ -326,10 +326,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function EnhancedTable() {
+export default function FormTable() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
+  const [orderBy, setOrderBy] = React.useState('active');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense] = React.useState(false);
@@ -398,7 +398,7 @@ export default function EnhancedTable() {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <FormTableToolbar numSelected={selected.length} />
         <TableContainer>
           <Table
             className={classes.table}
@@ -406,7 +406,7 @@ export default function EnhancedTable() {
             size={dense ? 'small' : 'medium'}
             aria-label="enhanced table"
           >
-            <EnhancedTableHead
+            <FormTableHead
               classes={classes}
               numSelected={selected.length}
               order={order}
@@ -441,10 +441,10 @@ export default function EnhancedTable() {
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
+                      <TableCell align="right">{row.active}</TableCell>
+                      <TableCell align="right">{row.person}</TableCell>
+                      <TableCell align="right">{row.created}</TableCell>
+                      <TableCell align="right">{row.updated}</TableCell>
                     </TableRow>
                   );
                 })}
