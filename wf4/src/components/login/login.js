@@ -87,7 +87,7 @@ export default function SignIn() {
       }
     }
   
-    const url = "https://iste501.rit.edu/api/login.php"
+    const url = "https://iste501b.rit.edu/api/login.php"
     axios.post(
       url,
       {username, password},
