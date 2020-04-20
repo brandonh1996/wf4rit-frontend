@@ -80,12 +80,18 @@ export default function SignIn() {
     }
 
     e.preventDefault();
+
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }
   
-    const url = "http://dev99.wf4rit.me/api/login.php?email=" + username + "&password=" + password
-    axios.get(
+    const url = "https://iste501.rit.edu/api/login.php"
+    axios.post(
       url,
-      null,
-      null,
+      {username, password},
+      config,
     ).then(response => {
       if (response.status === 200){
         if (!response.data.includes('"message":"Login failed."')) {
